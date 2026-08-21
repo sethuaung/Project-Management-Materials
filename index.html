@@ -1,92 +1,422 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="keywords" content="FE-Summrized">
-  <meta name="description" content="FELIXENT: Project Management Training">
-  <meta name="author" content="Mosquito">
-  <link href="contents/favicon.ico" rel="icon">
-  <title>Felixent — Demo Suite</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="PME-Summrized">
+    <meta name="description" content="Project Management Infographic Content for Class">
+    <meta name="author" content="Mosquito">
+    <link href="contents/favicon.ico" rel="icon">
+    <title>PME : Project Management Essentials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Warm Neutrals with Teal Accent) -->
+    <!-- Application Structure Plan: The SPA is structured into seven thematic sections, mirroring the course modules. A sticky top navigation bar allows for easy, non-linear exploration. Each section contains a concise summary paired with interactive charts or diagrams to visualize key concepts. This structure was chosen to transform the dense report content into an engaging, easily digestible, and interactive learning experience for students, prioritizing usability and quick reference over a linear document format. -->
+    <!-- Visualization & Content Choices:
+    - Project Life Cycle -> Goal: Organize -> Viz: HTML/CSS Flowchart. Justification: Clearly shows the sequential process.
+    - Methodology Comparison -> Goal: Compare -> Viz: Chart.js Bar Chart. Interaction: Hover tooltips. Justification: Ideal for direct comparison of Waterfall vs. Agile.
+    - Stakeholder Analysis -> Goal: Organize -> Viz: Chart.js Bubble Chart. Interaction: Hover tooltips. Justification: Perfect for visualizing the 2x2 Power/Interest matrix.
+    - Project Progress -> Goal: Inform -> Viz: Chart.js Doughnut Chart. Justification: Simple, clear visual for at-a-glance status.
+    - Scrum Framework -> Goal: Organize -> Viz: Chart.js Polar Area Chart. Justification: Engaging way to show the distinct Scrum events.
+    - Resource Allocation -> Goal: Change -> Viz: Chart.js Bar Chart. Justification: Shows how resource needs change over the project lifecycle.
+    - Job Search Funnel -> Goal: Organize -> Viz: HTML/CSS Funnel Diagram. Justification: Intuitive visual for a multi-stage process.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f4; /* warm-gray-100 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 400px;
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .active-link {
+            color: #14b8a6; /* teal-500 */
+            border-bottom-color: #14b8a6;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <div class="min-h-screen flex items-center justify-center">
-    <div class="max-w-3xl w-full p-6">
-      <header class="mb-6">
-        <h1 class="text-3xl font-semibold">Felixent PME Class Materials: Demo Suite</h1>
-        <p class="text-sm text-gray-600 mt-1">AMS · DWA · HRMS — local static demos</p></br>
-        <p class="text-sm text-gray-600 mt-1"><a href="./Project_Tracker_Dashboard/index.html" class="text-indigo-600 hover:underline ml-2">Go to Project Tracking Dashboard.</a></p></br>
-                <p class="text-sm text-gray-600 mt-1"><a href="./Project_Tracker_Dashboard/devops-dash.html" class="text-indigo-600 hover:underline ml-2">FinTech DevOps Dashboard.</a></p></br>
-      </header>
+<body class="text-stone-700">
 
-      <div class="grid gap-4">
-        <a class="block p-4 bg-white rounded shadow hover:shadow-md" href="./AMS/public/index.html">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-lg font-medium">AMS — Inventory / Assets</div>
-              <div class="text-sm text-gray-500">Inventory dashboard, assets, categories, locations, users</div>
+    <header class="bg-stone-800 text-white p-8 text-center shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">Hybrid Project Management (Google and PMI)</h1>
+        <p class="text-lg md:text-xl text-stone-300">A Visual Summary of Key Concepts</p>
+    </header>
+
+    <nav id="navbar" class="sticky top-0 bg-white/90 backdrop-blur-sm shadow-md z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center items-center h-16 space-x-2 md:space-x-6 text-sm md:text-base">
+                <a href="#foundations" class="nav-link font-semibold border-b-2 border-transparent pb-1">Foundations</a>
+                <a href="#initiation" class="nav-link font-semibold border-b-2 border-transparent pb-1">Initiation</a>
+                <a href="#planning" class="nav-link font-semibold border-b-2 border-transparent pb-1">Planning</a>
+                <a href="#execution" class="nav-link font-semibold border-b-2 border-transparent pb-1">Execution</a>
+                <a href="#agile" class="nav-link font-semibold border-b-2 border-transparent pb-1">Agile</a>
+                <a href="#capstone" class="nav-link font-semibold border-b-2 border-transparent pb-1">Capstone</a>
+                <a href="#job-search" class="nav-link font-semibold border-b-2 border-transparent pb-1">Job Search</a>
+                <a href="#fintech" class="nav-link font-semibold border-b-2 border-transparent pb-1">FinTech</a>
+                <a href="src/quiz.html" class="nav-link font-semibold border-b-2 border-transparent pb-1">QUIZ</a>
             </div>
-            <div class="text-indigo-600 font-semibold">Open</div>
-          </div>
-        </a>
+        </div>
+    </nav>
 
-        <a class="block p-4 bg-white rounded shadow hover:shadow-md" href="./DWA/public/index.html">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-lg font-medium">DWA — Digital Wallet</div>
-              <div class="text-sm text-gray-500">Transactions, wallets, channels, admin test tools</div>
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="foundations" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">Section 1: Foundations of Project Management</h2>
+                <p class="text-lg max-w-3xl mx-auto">This section introduces the core concepts of project management. A project is a temporary effort to create a unique product or service. The project manager's key role is to balance the "Triple Constraint" of Scope, Schedule, and Cost to deliver value.</p>
             </div>
-            <div class="text-indigo-600 font-semibold">Open</div>
-          </div>
-        </a>
-
-        <a class="block p-4 bg-white rounded shadow hover:shadow-md" href="./HRMS/public/index.html">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-lg font-medium">HRMS — Human Resources</div>
-              <div class="text-sm text-gray-500">Employees, attendance, leave, people metrics</div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-teal-700 mb-4 text-center">The Project Life Cycle</h3>
+                    <p class="text-center mb-6">Every project follows a sequential path from start to finish, ensuring a structured approach to delivering results.</p>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-stone-100 rounded-lg text-center font-semibold text-stone-800">1. Initiating</div>
+                        <div class="text-2xl text-stone-400 text-center">↓</div>
+                        <div class="p-4 bg-stone-100 rounded-lg text-center font-semibold text-stone-800">2. Planning</div>
+                        <div class="text-2xl text-stone-400 text-center">↓</div>
+                        <div class="p-4 bg-stone-100 rounded-lg text-center font-semibold text-stone-800">3. Executing</div>
+                        <div class="text-2xl text-stone-400 text-center">↓</div>
+                        <div class="p-4 bg-stone-100 rounded-lg text-center font-semibold text-stone-800">4. Closing</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-teal-700 mb-4">Methodology Comparison</h3>
+                    <p class="mb-4">Different projects require different approaches. Waterfall is linear and best for projects with fixed requirements, while Agile is iterative and ideal for projects where requirements may evolve.</p>
+                    <div class="chart-container">
+                        <canvas id="methodologyChart"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="text-indigo-600 font-semibold">Open</div>
-          </div>
-        </a>
+        </section>
 
-        <a class="block p-4 bg-white rounded shadow hover:shadow-md" href="https://crm-felixent.vercel.app">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-lg font-medium">SkyLink CRM — Operations dashboard for Travel Agents</div>
-              <div class="text-sm text-gray-500">Customers, Tickets, Reports, Loyalty, Calendar, GDS, FAQs, and About</div>
+        <section id="initiation" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">Section 2: Project Initiation</h2>
+                <p class="text-lg max-w-3xl mx-auto">This phase is about setting the project up for success. It involves defining the project's purpose, getting formal authorization through a Project Charter, and identifying all stakeholders.</p>
             </div>
-            <div class="text-indigo-600 font-semibold">Open</div>
-          </div>
-        </a>
-
-        <a class="block p-4 bg-white rounded shadow hover:shadow-md" href="./LMS/index.html">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-lg font-medium">Learning Management System (LMS)— </div>
-              <div class="text-sm text-gray-500">Frontend prototype, detailing the project's purpose, technology stack, data structure, and deployment instructions.</div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-teal-700 mb-4">Stakeholder Analysis Matrix</h3>
+                    <p class="mb-4">This tool helps project managers prioritize stakeholder engagement based on their level of power and interest in the project. Hover over the bubbles to see the recommended strategy.</p>
+                    <div class="chart-container">
+                        <canvas id="stakeholderChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-teal-700 mb-4">Cost-Benefit Analysis (CBA)</h3>
+                    <p class="mb-4">A CBA is a financial tool used to determine if a project is a worthwhile investment by comparing its costs to its potential benefits. A project is generally considered viable if the benefits outweigh the costs.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="bg-stone-100">
+                                    <th class="p-3 font-semibold">Metric</th>
+                                    <th class="p-3 font-semibold">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="p-3 font-medium">Cost</td>
+                                    <td class="p-3">All financial resources required for the project.</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-3 font-medium">Benefit</td>
+                                    <td class="p-3">The tangible (e.g., revenue) and intangible (e.g., brand reputation) value created.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">Outcome</td>
+                                    <td class="p-3">If Benefits > Costs, the project is likely a good investment.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="text-indigo-600 font-semibold">Open</div>
-          </div>
-        </a>
+        </section>
 
-        <a class="block p-4 bg-white rounded shadow hover:shadow-md" href="./PMP/index.html">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-lg font-medium">Project Management Suite — </div>
-              <div class="text-sm text-gray-500">Includes demo data and four interactive views: Gantt, Grid (table), Card (kanban-like), and Calendar.</div>
+        <section id="planning" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">Section 3: Project Planning</h2>
+                <p class="text-lg max-w-3xl mx-auto">This is the blueprint phase. The work is broken down into manageable tasks using a Work Breakdown Structure (WBS), a schedule is created, and potential risks are identified and planned for.</p>
             </div>
-            <div class="text-indigo-600 font-semibold">Open</div>
-          </div>
-        </a>
-      </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-teal-700 mb-4 text-center">Key Planning Documents</h3>
+                <p class="text-center mb-6 max-w-2xl mx-auto">A successful project relies on several key documents that outline the schedule, budget, communication strategy, and risk mitigation plans.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                        <h4 class="font-bold text-lg text-stone-800">Project Schedule</h4>
+                        <p class="text-sm">A timeline of all tasks, dependencies, and milestones, often visualized in a Gantt chart.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                        <h4 class="font-bold text-lg text-stone-800">Budget Plan</h4>
+                        <p class="text-sm">Outlines all financial resources, including contingency funds for unexpected risks.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                        <h4 class="font-bold text-lg text-stone-800">Communication Plan</h4>
+                        <p class="text-sm">Defines who needs what information, when, and how it will be delivered.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                        <h4 class="font-bold text-lg text-stone-800">Risk Register</h4>
+                        <p class="text-sm">A log of potential risks, their impact, and the plans to mitigate them.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <footer class="mt-6 text-sm text-gray-500">
-        <p>Tip: serve each app folder with a local static server (python -m http.server) and open this index for quick navigation.</p></br>
-        <p class="text-sm">For educational purposes. © 2025 <a href="https://sandbox-felixent.vercel.app"> Felixent</a> All rights reserved.</p>
-      </footer>
-    </div>
-  </div>
+        <section id="execution" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">Section 4: Project Execution</h2>
+                <p class="text-lg max-w-3xl mx-auto">Execution is where the plan is put into action. The project manager facilitates the team, manages stakeholders, and handles any changes or problems that arise while tracking progress.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-teal-700 mb-4">Project Progress Tracking</h3>
+                <p class="mb-4">This chart provides a quick visual of the project's health by comparing the planned progress to the actual work completed. In this example, the project is slightly behind schedule, which would prompt the PM to investigate.</p>
+                <div class="chart-container">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="agile" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">Section 5: Agile Project Management</h2>
+                <p class="text-lg max-w-3xl mx-auto">Agile is a flexible, iterative approach that delivers value in short cycles called Sprints. The Scrum framework is the most popular way to implement Agile, with defined roles and events to keep the project moving.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-teal-700 mb-4">The Scrum Framework Roles</h3>
+                     <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="bg-stone-100">
+                                    <th class="p-3 font-semibold">Role</th>
+                                    <th class="p-3 font-semibold">Responsibility</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="p-3 font-medium">Product Owner</td>
+                                    <td class="p-3">Represents the customer and prioritizes the work.</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-3 font-medium">Scrum Master</td>
+                                    <td class="p-3">Facilitates the process and removes obstacles.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">Development Team</td>
+                                    <td class="p-3">The self-organizing group that delivers the product.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-teal-700 mb-4">The Scrum Sprint Cycle</h3>
+                    <p class="mb-4">Scrum organizes work into a continuous cycle of events, each with a specific purpose, to ensure regular inspection and adaptation.</p>
+                    <div class="chart-container">
+                        <canvas id="scrumChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="capstone" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">Section 6: Capstone</h2>
+                <p class="text-lg max-w-3xl mx-auto">The final phase, Closing, is crucial for success. It involves formally completing the project, releasing resources, and capturing valuable lessons learned for future projects.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-teal-700 mb-4">Resource Allocation vs. Time</h3>
+                <p class="mb-4">This chart illustrates how the allocation of team resources typically changes throughout the project life cycle, peaking during the Execution phase where most of the work is done.</p>
+                <div class="chart-container">
+                    <canvas id="resourceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="job-search" class="scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">Section 7: Accelerate Your Job Search with AI</h2>
+                <p class="text-lg max-w-3xl mx-auto">This course teaches you how to leverage modern AI tools to make your job search more efficient and effective, from tailoring your resume to practicing for interviews.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-teal-700 mb-4 text-center">The Job Search Funnel</h3>
+                <p class="text-center mb-6">The job search is a process of narrowing down opportunities, starting with broad exploration and ending with a specific offer.</p>
+                <div class="space-y-2 max-w-md mx-auto">
+                    <div class="p-4 bg-teal-100 rounded-lg text-center font-semibold text-teal-800 w-full">1. Identify Skills & Target Roles</div>
+                    <div class="text-2xl text-stone-400 text-center">↓</div>
+                    <div class="p-4 bg-teal-100 rounded-lg text-center font-semibold text-teal-800 w-11/12 mx-auto">2. Build Resume & Portfolio</div>
+                    <div class="text-2xl text-stone-400 text-center">↓</div>
+                    <div class="p-4 bg-teal-100 rounded-lg text-center font-semibold text-teal-800 w-10/12 mx-auto">3. Network & Apply</div>
+                    <div class="text-2xl text-stone-400 text-center">↓</div>
+                    <div class="p-4 bg-teal-100 rounded-lg text-center font-semibold text-teal-800 w-9/12 mx-auto">4. Interview Prep</div>
+                    <div class="text-2xl text-stone-400 text-center">↓</div>
+                    <div class="p-4 bg-teal-100 rounded-lg text-center font-semibold text-teal-800 w-8/12 mx-auto">5. Offer & Negotiation</div>
+                </div>
+            </div>
+        </section>
+
+<!-- Fintech-Section -->
+<br>
+        <section id="fintech" class="scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">Project Management & Analysis on the Digital Revolution</h2>
+                <p class="text-lg max-w-3xl mx-auto">Digital Currencies, Blockchain, and the Future of Finance.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-teal-700 mb-4">The FinTech Revolution</h3>
+                <p class="mb-4">Financial Technology, or FinTech, is fundamentally reshaping the global financial industry. Driven by advanced technologies like AI, blockchain, and big data, this transformation is enhancing the efficiency, accessibility, and affordability of financial services, compelling traditional institutions to adapt to a new digital reality. </p>
+                <p class="mb-4"> <a href="src/cryfinera.html">(1) Securing the Future of Finance [Cryptotechnology & Digital Era Solutions]</a> </p>
+                <p class="mb-4"> <a href="src/fintech.html">(2) FinTech Summary [Financial Technology and Systems in the Digital Age]</a> </p>
+                <p class="mb-4"> <a href="src/finops1.html">(3) FinOps Summary [FinOps Concepts and Cultural]</a> </p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-teal-700 mb-4">Jira | Project Tracking Software </h3>
+                <p class="mb-4">Jira Software includes the base software, including agile project management features (previously a separate product: Jira Agile), project management tool for agile teams to plan and track work across every team. It integrates with other tools, suggests tasks with AI, and aligns work to goals.</p>
+                <p class="mb-4"> <a href="src/jira.html">More detail >>> </a> </p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-teal-700 mb-4">History of Project Management, Industrial Revolution, Cyber Law & Cybersecurity Frameworks </h3>
+                <p class="mb-4"> <a href="src/pm-history.html">(I) History of Project Management </a> </p>
+                <p class="mb-4"> <a href="src/indus-revo.html">(II) Industrial Revolution </a> </p>
+                <p class="mb-4"> <a href="src/clcf.html">(III) Cyber Law & Cybersecurity Frameworks </a> </p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-teal-700 mb-4">Navigating Infrastructure, Automation, and Project Governance </h3>
+                <p class="mb-4">The modern enterprise is a complex web of interconnected systems, with the Enterprise Resource Planning (ERP) platform serving as its central nervous system. As these platforms evolve from monolithic on-premise installations to dynamic, cloud-based hubs, they have become prime targets for cyberattacks, making a traditional, reactive approach to security no longer viable. </p>
+                <p class="mb-4"> <a href="src/dsonerp.html">(1) Enterprise Security (ERP) and DevSecOps Principles </a> </p>
+                <p class="mb-4"> <a href="src/dsonerp2.html">(2) DevSecOps & ERP Security </a> </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-800 text-white p-6 text-center mt-16">
+        <p>For Project Management Students. © <a href="https://felixent.verel.app"  >Felixent</a>. </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active-link', link.getAttribute('href').substring(1) === entry.target.id);
+                        });
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px' });
+
+            sections.forEach(section => observer.observe(section));
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                return Array.isArray(label) ? label.join(' ') : label;
+            };
+
+            const commonChartOptions = {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#44403c', font: { size: 14, family: 'Inter' } } },
+                    tooltip: {
+                        backgroundColor: '#292524', titleFont: { size: 16 }, bodyFont: { size: 14 }, padding: 12, cornerRadius: 4,
+                        callbacks: { title: tooltipTitleCallback }
+                    }
+                }
+            };
+
+            const palette = {
+                teal: '#14b8a6',
+                tealLight: '#5eead4',
+                stone: '#78716c',
+                stoneLight: '#a8a29e'
+            };
+
+            new Chart(document.getElementById('methodologyChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Flexibility', 'Best For', 'Approach'],
+                    datasets: [
+                        { label: 'Waterfall', data: [2, 4, 5], backgroundColor: palette.stone, borderWidth: 1 },
+                        { label: 'Agile', data: [5, 3, 4], backgroundColor: palette.teal, borderWidth: 1 }
+                    ]
+                },
+                options: { ...commonChartOptions, indexAxis: 'y', scales: { x: { display: false } },
+                    plugins: { ...commonChartOptions.plugins,
+                        tooltip: { ...commonChartOptions.plugins.tooltip,
+                            callbacks: { ...commonChartOptions.plugins.tooltip.callbacks,
+                                label: function(context) {
+                                    const details = {
+                                        'Waterfall': { 'Flexibility': 'Low', 'Best For': 'Fixed requirements', 'Approach': 'Sequential' },
+                                        'Agile': { 'Flexibility': 'High', 'Best For': 'Evolving needs', 'Approach': 'Iterative' }
+                                    };
+                                    return details[context.dataset.label][context.label] || '';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('stakeholderChart'), {
+                type: 'bubble',
+                data: {
+                    datasets: [
+                        { label: 'Manage Closely', data: [{x: 8, y: 8, r: 20}], backgroundColor: palette.teal },
+                        { label: 'Keep Satisfied', data: [{x: 8, y: 3, r: 15}], backgroundColor: palette.tealLight },
+                        { label: 'Keep Informed', data: [{x: 3, y: 8, r: 15}], backgroundColor: palette.stone },
+                        { label: 'Monitor', data: [{x: 3, y: 3, r: 10}], backgroundColor: palette.stoneLight }
+                    ]
+                },
+                options: { ...commonChartOptions,
+                    scales: {
+                        y: { beginAtZero: true, max: 10, title: { display: true, text: 'Interest →', color: '#44403c', font: { weight: 'bold' } } },
+                        x: { beginAtZero: true, max: 10, title: { display: true, text: 'Power →', color: '#44403c', font: { weight: 'bold' } } }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('progressChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Actual Progress', 'Remaining'],
+                    datasets: [{ data: [60, 40], backgroundColor: [palette.teal, palette.stoneLight], hoverOffset: 8, borderColor: '#f5f5f4', borderWidth: 4 }]
+                },
+                options: { ...commonChartOptions, cutout: '60%' }
+            });
+
+            new Chart(document.getElementById('scrumChart'), {
+                type: 'polarArea',
+                data: {
+                    labels: ['Sprint Planning', 'Daily Scrum', 'Sprint Review', 'Sprint Retrospective', 'The Sprint'],
+                    datasets: [{ data: [4, 2, 3, 3, 5], backgroundColor: ['rgba(20, 184, 166, 0.7)', 'rgba(94, 234, 212, 0.7)', 'rgba(120, 113, 108, 0.7)', 'rgba(168, 162, 158, 0.7)', 'rgba(20, 184, 166, 0.5)'] }]
+                },
+                options: commonChartOptions
+            });
+
+            new Chart(document.getElementById('resourceChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Initiating', 'Planning', 'Executing', 'Closing'],
+                    datasets: [{ label: 'Resource Allocation', data: [20, 45, 100, 15], backgroundColor: [palette.stoneLight, palette.stone, palette.teal, palette.tealLight] }]
+                },
+                options: { ...commonChartOptions, scales: { y: { beginAtZero: true, ticks: { callback: value => value + '%' } } } }
+            });
+        });
+    </script>
 </body>
 </html>
