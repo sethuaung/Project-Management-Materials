@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta name="keywords" content="PMBOK Guide 8th Edition Student Guidebook">
+    <meta name="description" content="Project Management Infographic Content for Class">
+    <meta name="author" content="Mosquito">
+    <link href="contents/favicon.ico" rel="icon">
+  <title>FELIXENT : PMBOK Guide 8th Edition — Interactive Reference System</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- TOP NAVBAR -->
+  <header class="sticky top-0 z-40 bg-slate-900 text-white border-b border-slate-800 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Left: Logo & Title -->
+        <div class="flex items-center space-x-3">
+          <button id="mobileMenuBtn" class="lg:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+          <div class="flex items-center space-x-2">
+            <i data-lucide="book-open-check" class="w-7 h-7 text-indigo-400"></i>
+            <span class="font-bold text-lg tracking-tight">FELIXENT : PMBOK 8 <span class="text-indigo-400 font-normal">Guidebook</span></span>
+          </div>
+        </div>
+
+        <!-- Center: Search Bar -->
+        <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search 40 processes, 109 tools, or 53 outputs..." 
+            class="w-full pl-9 pr-4 py-1.5 bg-slate-800 border border-slate-700 rounded-lg text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+          />
+        </div>
+
+        <!-- Right: Badge / Actions -->
+        <div class="flex items-center space-x-3 text-xs">
+          <span class="bg-indigo-900/80 text-indigo-300 border border-indigo-700/50 px-2.5 py-1 rounded-full font-medium hidden sm:inline-block">
+            PMI Standard 2026 Edition
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 gap-8">
+
+    <!-- DYNAMIC SIDEBAR MENU -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-slate-200 transform -translate-x-full lg:translate-x-0 lg:static lg:z-auto lg:w-64 lg:border-r-0 shrink-0 transition-transform duration-200 ease-in-out flex flex-col shadow-xl lg:shadow-none">
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between lg:hidden">
+        <span class="font-semibold text-slate-700">Navigation</span>
+        <button id="closeSidebarBtn" class="p-1 text-slate-400 hover:text-slate-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      
+      <nav id="menuList" class="p-4 overflow-y-auto space-y-1 text-sm flex-1">
+        <!-- Dynamic Menu Items populated via JS -->
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 min-w-0 space-y-12 pb-16">
+      
+      <!-- HERO / OVERVIEW -->
+      <section id="overview" class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-indigo-900/40">
+        <div class="inline-flex items-center gap-2 text-indigo-400 text-xs font-semibold tracking-wide uppercase bg-indigo-900/50 px-3 py-1 rounded-full border border-indigo-700/50 mb-4">
+          <i data-lucide="shield-check" class="w-4 h-4"></i> Official Framework Reference
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 text-white">
+          PMBOK Guide 8th Edition: Student Guidebook
+        </h1>
+        <p class="text-slate-300 text-base leading-relaxed max-w-3xl">
+          The PMBOK 8th Edition introduces 6 Principles and 7 Performance Domains, restoring 40 explicit processes tailored for Predictive, Agile, and Hybrid delivery models across modern industries.
+        </p>
+        <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center border-t border-slate-800 pt-6">
+          <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700/50">
+            <div class="text-2xl font-bold text-indigo-400">6</div>
+            <div class="text-xs text-slate-400 uppercase">Principles</div>
+          </div>
+          <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700/50">
+            <div class="text-2xl font-bold text-indigo-400">7</div>
+            <div class="text-xs text-slate-400 uppercase">Domains</div>
+          </div>
+          <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700/50">
+            <div class="text-2xl font-bold text-indigo-400">40</div>
+            <div class="text-xs text-slate-400 uppercase">Processes</div>
+          </div>
+          <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700/50">
+            <div class="text-2xl font-bold text-indigo-400">109</div>
+            <div class="text-xs text-slate-400 uppercase">Tools & Techniques</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1: INTRODUCTION -->
+      <section id="fundamentals" class="scroll-mt-20 bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
+            <i data-lucide="book" class="w-6 h-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">1. Introduction & Fundamentals</h2>
+        </div>
+        <p class="text-slate-600 leading-relaxed mb-4">
+          PMBOK 8 transitions PMI's standard from rigid process groups to principle-based performance domains while reintroducing 40 explicit processes suited for any delivery approach. A project is defined as a temporary endeavor creating a unique deliverable under scope, schedule, and cost constraints.
+        </p>
+        <div class="bg-slate-50 border-l-4 border-indigo-500 p-4 rounded-r-lg text-slate-700 text-sm">
+          <strong>Key Focus:</strong> Life cycle models, early governance via the Project Canvas tool, PMO structures, and strategic alignment through Portfolio and Program management.
+        </div>
+      </section>
+
+      <!-- SECTION 2: THE 6 PRINCIPLES -->
+      <section id="principles" class="scroll-mt-20 bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
+            <i data-lucide="compass" class="w-6 h-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">2. The 6 PMBOK 8 Principles</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="principlesGrid">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- SECTION 3: PERFORMANCE DOMAINS & PROCESSES -->
+      <section id="domains" class="scroll-mt-20 bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
+            <i data-lucide="layers" class="w-6 h-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">3. The 7 Performance Domains & 40 Processes</h2>
+        </div>
+
+        <div class="space-y-6" id="domainsAccordion">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- SECTION 4: TOOLS & TECHNIQUES -->
+      <section id="tools" class="scroll-mt-20 bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
+            <i data-lucide="wrench" class="w-6 h-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">4. Tools and Techniques (109 Total)</h2>
+        </div>
+
+        <!-- Standalone Highlights -->
+        <h3 class="text-lg font-semibold text-slate-800 mb-3">Featured Standalone Tools</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8" id="standaloneTools">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Interactive Searchable Tools Index -->
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-semibold text-slate-800">A-Z Tool Directory</h3>
+          <span class="text-xs text-slate-500">Filter by typing in the search bar above</span>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 max-h-96 overflow-y-auto" id="toolsList">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- SECTION 5: KEY OUTPUTS -->
+      <section id="outputs" class="scroll-mt-20 bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
+            <i data-lucide="file-check" class="w-6 h-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">5. Key Outputs (53 Total)</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 max-h-96 overflow-y-auto p-1" id="outputsList">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- SECTION 6: SPECIAL CONTENT -->
+      <section id="special" class="scroll-mt-20 bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
+            <i data-lucide="git-branch" class="w-6 h-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">6. Delivery Models & Process Changes</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="border border-slate-200 rounded-lg p-4 bg-slate-50">
+            <h3 class="font-bold text-slate-800 mb-2 flex items-center gap-2">
+              <i data-lucide="refresh-cw" class="w-4 h-4 text-indigo-600"></i> Agile Integration
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Agile practices (backlog refinement, sprints, retrospectives) are natively embedded directly into standard process domains rather than treated as external add-ons.
+            </p>
+          </div>
+          <div class="border border-slate-200 rounded-lg p-4 bg-slate-50">
+            <h3 class="font-bold text-slate-800 mb-2 flex items-center gap-2">
+              <i data-lucide="sliders" class="w-4 h-4 text-indigo-600"></i> Methodology Choice
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Select <strong>Predictive</strong> for fixed constraints, <strong>Agile</strong> for high uncertainty/innovation, or <strong>Hybrid</strong> to combine governance with rapid iteration.
+            </p>
+          </div>
+          <div class="border border-slate-200 rounded-lg p-4 bg-slate-50">
+            <h3 class="font-bold text-slate-800 mb-2 flex items-center gap-2">
+              <i data-lucide="git-merge" class="w-4 h-4 text-indigo-600"></i> Process Consolidation
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Consolidated <em>Lead the Team</em> (Develop + Manage Team) and <em>Perform Risk Analysis</em> (Qual + Quant Analysis) into single streamlined processes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: FAQS -->
+      <section id="faqs" class="scroll-mt-20 bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
+            <i data-lucide="help-circle" class="w-6 h-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">7. Frequently Asked Questions</h2>
+        </div>
+        <div class="space-y-4" id="faqsContainer">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-xs">
+      <p>PMBOK Guide 8th Edition Student Guidebook — Interactive Reference System</p>
+      <p>For Project Management Students. © <a href="https://felixent.verel.app"  >Felixent</a>. </p>
+    </div>
+  </footer>
+
+  <!-- DYNAMIC JAVASCRIPT LOGIC -->
+  <script>
+    // --- DATA STORE ---
+    const menuData = [
+      { id: "overview", label: "Overview & Key Takeaways", icon: "home" },
+      { id: "fundamentals", label: "1. Introduction & Fundamentals", icon: "book" },
+      { id: "principles", label: "2. The 6 Principles", icon: "compass" },
+      { id: "domains", label: "3. 7 Domains & 40 Processes", icon: "layers" },
+      { id: "tools", label: "4. Tools & Techniques (109)", icon: "wrench" },
+      { id: "outputs", label: "5. Key Outputs (53)", icon: "file-check" },
+      { id: "special", label: "6. Special Content & Agile", icon: "git-branch" },
+      { id: "faqs", label: "7. Frequently Asked Questions", icon: "help-circle" }
+    ];
+
+    const principlesData = [
+      { title: "Adopt a Holistic View", desc: "Evaluate all project elements within the broader organizational ecosystem." },
+      { title: "Focus on Value", desc: "Continually align outcomes with business benefits and customer utility." },
+      { title: "Embed Quality in Workflows", desc: "Integrate proactive quality assurance directly into processes." },
+      { title: "Be a Diligent Leader", desc: "Apply emotional intelligence and clear vision to align dynamics." },
+      { title: "Integrate Sustainability", desc: "Incorporate environmental and social sustainability into choices." },
+      { title: "Build Empowered Cultures", desc: "Foster trust, autonomy, and psychological safety in teams." }
+    ];
+
+    const domainsData = [
+      { name: "Governance Domain", count: "9 Processes", processes: ["Initiate Project or Phase", "Integrate and Align Project Plans", "Plan Sourcing Strategy", "Manage Project Execution", "Manage Quality Assurance", "Manage Project Knowledge", "Monitor & Control Project Performance", "Assess & Implement Changes", "Close Project or Phase"] },
+      { name: "Scope Domain", count: "6 Processes", processes: ["Plan Scope Management", "Elicit and Analyze Requirements", "Define Scope", "Develop Scope Structure (WBS)", "Monitor and Control Scope", "Validate Scope"] },
+      { name: "Schedule Domain", count: "3 Processes", processes: ["Plan Schedule Management", "Develop Schedule", "Monitor and Control Schedule"] },
+      { name: "Finance Domain", count: "4 Processes", processes: ["Plan Financial Management", "Estimate Costs", "Develop Budget", "Monitor and Control Finances"] },
+      { name: "Stakeholders Domain", count: "7 Processes", processes: ["Identify Stakeholders", "Plan Stakeholder Engagement", "Plan Communications Management", "Manage Stakeholder Engagement", "Manage Communications", "Monitor Stakeholder Engagement", "Monitor Communications"] },
+      { name: "Resources Domain", count: "5 Processes", processes: ["Plan Resource Management", "Estimate Resources", "Acquire Resources", "Lead the Team", "Monitor and Control Resourcing"] },
+      { name: "Risk Domain", count: "6 Processes", processes: ["Plan Risk Management", "Identify Risks", "Perform Risk Analysis", "Plan Risk Responses", "Implement Risk Responses", "Monitor Risks"] }
+    ];
+
+    const standaloneToolsData = [
+      { name: "Project Canvas", desc: "1-page initiation visual tool defining strategic alignment & constraints." },
+      { name: "Expert Judgment", desc: "Strategic advice from SMEs and experienced stakeholders." },
+      { name: "Earned Value Management (EVM)", desc: "Integrates scope, cost, and schedule metrics (PV, EV, AC, CPI, SPI)." },
+      { name: "Make-or-Buy Analysis", desc: "Financial/strategic determination to build internally vs contract out." }
+    ];
+
+    const toolsAZData = [
+      "After-action reviews", "Agile Release Planning", "Analogous estimating", "Artificial intelligence", "Audits",
+      "Audits and inspections", "Augmented reality", "Backlog management", "Backlog refinement", "Bottom-up estimating",
+      "Brainstorming", "Branch and bound", "Change control tools", "Checklists", "Colocation", "Communication methods",
+      "Communication models", "Constructive cost model (COCOMO)", "Control charts", "Critical path method (CPM)",
+      "Daily coordination meetings", "Decision making", "Decomposition", "Design thinking", "Emotional intelligence (EQ)",
+      "Earned Value Management", "Expert judgment", "Genetic algorithms", "Ground rules", "Information radiators",
+      "Kanban boards", "Leads and lags", "Make-or-buy analysis", "Parametric estimating", "Precedence diagramming method (PDM)",
+      "Predictive analytics", "Project canvas", "Resource leveling", "Retrospectives", "Risk categorization",
+      "Schedule compression", "Storytelling", "Three-point estimating", "Tuckman ladder", "User stories", "Value stream mapping", "Velocity"
+    ];
+
+    const outputsData = [
+      "Assumption Log", "Basis of Estimates", "Change Requests", "Cost Baseline", "Cost Estimates", "Deliverables",
+      "Final Report", "Financial Management Plan", "Issue Log", "Lessons Learned Register", "Product Backlog",
+      "Project Charter", "Project Management Plan", "Project Schedule", "Project Scope Statement", "Quality Reports",
+      "Requirements Documentation", "Resource Breakdown Structure", "Risk Register", "Risk Report", "Schedule Baseline",
+      "Scope Baseline", "Stakeholder Register", "Team Charter", "User Stories", "WBS Dictionary", "Work Performance Data",
+      "Work Performance Information", "Work Performance Reports"
+    ];
+
+    const faqsData = [
+      { q: "What does PMBOK 8 focus on?", a: "PMBOK 8 focuses on principle-based execution and 7 performance domains while reincorporating 40 explicit processes adaptable for any lifecycle." },
+      { q: "Is Agile included natively in PMBOK 8?", a: "Yes. Agile practices (sprints, retrospectives, backlogs) are natively documented inside standard processes alongside predictive tools." },
+      { q: "What happened to process groups?", a: "Process groups were replaced by 7 Performance Domains to enable continuous multi-dimensional governance." }
+    ];
+
+    // --- DOM INITIALIZATION & RENDER ---
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      // 1. Render Navigation Menu
+      const menuList = document.getElementById("menuList");
+      menuList.innerHTML = menuData.map(item => `
+        <a href="#${item.id}" class="nav-item flex items-center gap-3 px-3 py-2 text-slate-600 rounded-lg hover:bg-slate-100 hover:text-indigo-600 transition font-medium">
+          <i data-lucide="${item.icon}" class="w-4 h-4"></i>
+          <span>${item.label}</span>
+        </a>
+      `).join("");
+
+      // 2. Render Principles
+      const principlesGrid = document.getElementById("principlesGrid");
+      principlesGrid.innerHTML = principlesData.map(p => `
+        <div class="p-4 border border-slate-200 rounded-lg bg-slate-50 hover:border-indigo-300 transition">
+          <h3 class="font-bold text-slate-800 text-sm mb-1">${p.title}</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">${p.desc}</p>
+        </div>
+      `).join("");
+
+      // 3. Render Performance Domains & Processes
+      const domainsAccordion = document.getElementById("domainsAccordion");
+      domainsAccordion.innerHTML = domainsData.map((d, index) => `
+        <div class="border border-slate-200 rounded-lg overflow-hidden">
+          <div class="bg-slate-50 p-4 flex items-center justify-between cursor-pointer border-b border-slate-200" onclick="toggleAccordion('domain-${index}')">
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center">${index + 1}</span>
+              <h3 class="font-bold text-slate-800">${d.name}</h3>
+            </div>
+            <span class="text-xs font-semibold bg-indigo-100 text-indigo-700 px-2.5 py-1 rounded-full">${d.count}</span>
+          </div>
+          <div id="domain-${index}" class="p-4 bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+            ${d.processes.map(proc => `
+              <div class="flex items-center gap-2 p-2 rounded border border-slate-100 bg-slate-50/50 text-xs text-slate-700">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-indigo-500 shrink-0"></i>
+                <span>${proc}</span>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `).join("");
+
+      // 4. Render Standalone Tools
+      const standaloneTools = document.getElementById("standaloneTools");
+      standaloneTools.innerHTML = standaloneToolsData.map(t => `
+        <div class="p-4 border border-slate-200 rounded-lg bg-indigo-50/30">
+          <h4 class="font-bold text-slate-800 text-sm mb-1">${t.name}</h4>
+          <p class="text-xs text-slate-600">${t.desc}</p>
+        </div>
+      `).join("");
+
+      // 5. Render Tools List
+      renderToolsList(toolsAZData);
+
+      // 6. Render Outputs List
+      renderOutputsList(outputsData);
+
+      // 7. Render FAQs
+      const faqsContainer = document.getElementById("faqsContainer");
+      faqsContainer.innerHTML = faqsData.map(faq => `
+        <div class="border border-slate-200 rounded-lg p-4 bg-slate-50">
+          <h4 class="font-bold text-slate-800 text-sm mb-1">${faq.q}</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">${faq.a}</p>
+        </div>
+      `).join("");
+
+      // Initialize icons
+      lucide.createIcons();
+
+      // Mobile Menu Handlers
+      const sidebar = document.getElementById("sidebar");
+      document.getElementById("mobileMenuBtn").addEventListener("click", () => {
+        sidebar.classList.remove("-translate-x-full");
+      });
+      document.getElementById("closeSidebarBtn").addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+      });
+
+      // Search functionality across tools & outputs
+      document.getElementById("searchInput").addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase();
+        
+        const filteredTools = toolsAZData.filter(t => t.toLowerCase().includes(query));
+        renderToolsList(filteredTools);
+
+        const filteredOutputs = outputsData.filter(o => o.toLowerCase().includes(query));
+        renderOutputsList(filteredOutputs);
+        
+        lucide.createIcons();
+      });
+    });
+
+    // Helper: Toggle Accordion
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle("hidden");
+    }
+
+    // Helper: Render Tools
+    function renderToolsList(items) {
+      const container = document.getElementById("toolsList");
+      if(items.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-400">No matching tools found.</p>`;
+        return;
+      }
+      container.innerHTML = `
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+          ${items.map(t => `
+            <div class="text-xs bg-white border border-slate-200 p-2 rounded text-slate-700 flex items-center gap-2">
+              <i data-lucide="wrench" class="w-3 h-3 text-slate-400"></i> ${t}
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    // Helper: Render Outputs
+    function renderOutputsList(items) {
+      const container = document.getElementById("outputsList");
+      if(items.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-400">No matching outputs found.</p>`;
+        return;
+      }
+      container.innerHTML = items.map(o => `
+        <div class="text-xs bg-slate-50 border border-slate-200 p-2.5 rounded-lg text-slate-700 font-medium flex items-center gap-2">
+          <i data-lucide="file-text" class="w-3.5 h-3.5 text-indigo-500"></i> ${o}
+        </div>
+      `).join("");
+    }
+  </script>
+</body>
+</html>
